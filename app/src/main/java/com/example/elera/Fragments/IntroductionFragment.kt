@@ -46,8 +46,8 @@ class IntroductionFragment : Fragment() {
         viewPagerAdapter = ViewPagerAdapter(
             listOf(
                 ViewPagerData(R.drawable.qizforviewpager, "We provide the best learning courses and great mentors!"),
-                ViewPagerData(R.drawable.qizforviewpager, "We provide the best learning courses and great mentors!"),
-                ViewPagerData(R.drawable.qizforviewpager, "We provide the best learning courses and great mentors!")
+                ViewPagerData(R.drawable.menwithglasses, "Learn anytime and anywhere easily and conveniently"),
+                ViewPagerData(R.drawable.secondgirlforviewpager, "Let`s improve your skills together with Elera right now!")
                 ) as MutableList<ViewPagerData>
         )
         binding.viewpagerIntroduction.adapter = viewPagerAdapter
@@ -103,6 +103,9 @@ class IntroductionFragment : Fragment() {
                     )
                 )
             }
+        }
+        if (position==3){
+            binding.introductionButton.text = "Get Started"
         }
     }
 
