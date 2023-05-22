@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.elera.DataClasses.ViewPagerData
 import com.example.elera.R
 
-class ViewPagerAdapter(private val item:MutableList<ViewPagerData>): RecyclerView.Adapter<ViewPagerAdapter.MyHolder>() {
+class IntroductionViewPagerAdapter(private val item:MutableList<ViewPagerData>): RecyclerView.Adapter<IntroductionViewPagerAdapter.MyHolder>() {
     class MyHolder(view: View):RecyclerView.ViewHolder(view) {
         private val photo = view.findViewById<ImageView>(R.id.viewpager_rasm)
         private val text = view.findViewById<TextView>(R.id.viewpager_text)

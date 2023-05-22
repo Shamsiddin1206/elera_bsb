@@ -9,7 +9,7 @@ import android.widget.ImageView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.example.elera.Adapters.ViewPagerAdapter
+import com.example.elera.Adapters.IntroductionViewPagerAdapter
 import com.example.elera.DataClasses.ViewPagerData
 import com.example.elera.R
 import com.example.elera.databinding.FragmentIntroductionBinding
@@ -30,7 +30,7 @@ class IntroductionFragment : Fragment() {
         }
     }
 
-    lateinit var viewPagerAdapter: ViewPagerAdapter
+    lateinit var viewPagerAdapter: IntroductionViewPagerAdapter
     lateinit var binding: FragmentIntroductionBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +48,7 @@ class IntroductionFragment : Fragment() {
     }
 
     private fun SetOnboardingItems(){
-        viewPagerAdapter = ViewPagerAdapter(
+        viewPagerAdapter = IntroductionViewPagerAdapter(
             listOf(
                 ViewPagerData(R.drawable.qizforviewpager, "We provide the best learning courses and great mentors!"),
                 ViewPagerData(R.drawable.menwithglasses, "Learn anytime and anywhere easily and conveniently"),
