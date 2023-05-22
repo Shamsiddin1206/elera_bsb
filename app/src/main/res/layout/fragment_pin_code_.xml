@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".SignInSignUp_fragments.PinCode_Fragment">
+    tools:context="Fragments.SignInSignUp_fragments.PinCode_Fragment">
 
 
    <ImageView
@@ -76,7 +76,6 @@
        android:textColor="#4683ff"
        android:textSize="18sp"
        android:textStyle="bold"
-       app:cursorColor="@color/ic_launcher_background"
        app:cursorWidth="2dp"
        app:hideLineWhenFilled="false"
        app:itemCount="4"

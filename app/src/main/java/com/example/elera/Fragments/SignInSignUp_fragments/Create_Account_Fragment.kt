@@ -2,13 +2,17 @@ package farrukh.example.reasa.SignInSignUp_fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.elera.R
+import com.example.elera.database.AppDatabase
 import com.example.elera.databinding.FragmentCreateAccountBinding
+import com.example.marks.entity.Student
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,16 +37,35 @@ class Create_Account_Fragment : Fragment() {
         }
     }
 
+    val appDatabase: AppDatabase by lazy {
+        AppDatabase.getInstance(requireContext())
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCreateAccountBinding.inflate(inflater,container,false)
 
+       var list_students = appDatabase.getUserDao().getAllStudents()
 
+        binding.signIn.setOnClickListener {
+            if (binding.emailOrg.text.isNullOrEmpty() || binding.passwordOrg.text.isNullOrEmpty()){
+                Toast.makeText(requireContext(), "fill the blanks", Toast.LENGTH_SHORT).show()
+            }
 
-
-
+            else{
+                appDatabase.getUserDao().addStudent(Student(name_student = binding.emailOrg.text.toString(), password_student = binding.passwordOrg.text.toString(), email = "", date = "", nickname = ""),)
+                Log.d("BNM", "onCreateView: "+list_students.joinToString())
+                if (list_students.isEmpty()){
+                    Toast.makeText(requireContext(), "can't register user", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(requireContext(), "registered ", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.beginTransaction().replace(R.id.activitymain,LoginFragment()).commit()
+                }
+            }
+        }
 
         return binding.root
     }

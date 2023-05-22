@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
-import farrukh.example.reasa.R
-import farrukh.example.reasa.databinding.FragmentOptionsForSigningBinding
+import com.example.elera.R
+import com.example.elera.databinding.FragmentOptionsForSigningBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,15 +38,18 @@ class Options_for_Signing_Fragment : Fragment() {
     ): View? {
         val binding = FragmentOptionsForSigningBinding.inflate(inflater, container, false)
 
+        binding.continie.setOnClickListener {
+            Toast.makeText(requireContext(), "not yet available", Toast.LENGTH_SHORT).show()
+        }
+
         binding.signUp.setOnClickListener {
-            findNavController().navigate(R.id.action_options_for_Signing_Fragment_to_create_Account_Fragment2)
+            parentFragmentManager.beginTransaction().replace(R.id.activitymain,Create_Account_Fragment()).commit()
         }
         binding.next.setOnClickListener {
-            findNavController().navigate(R.id.action_options_for_Signing_Fragment_to_loginFragment)
+            parentFragmentManager.beginTransaction().replace(R.id.activitymain,LoginFragment()).commit()
+
         }
-        binding.continie.setOnClickListener {
-            Toast.makeText(requireContext(), "Not available at the moment, try another option for signing", Toast.LENGTH_SHORT).show()
-        }
+
         return binding.root
 
     }

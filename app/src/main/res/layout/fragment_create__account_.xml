@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInSignUp_fragments.Create_Account_Fragment">
+    tools:context="Fragments.SignInSignUp_fragments.Create_Account_Fragment">
 
         <ImageView
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_width="130dp"
             android:layout_height="110dp"
             android:layout_marginTop="4dp"
-            android:src="@drawable/lll"
+            android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +127,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/next"
+            android:id="@+id/sign_in"
             android:layout_marginTop="32dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

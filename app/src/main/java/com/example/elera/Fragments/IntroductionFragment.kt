@@ -13,6 +13,7 @@ import com.example.elera.Adapters.ViewPagerAdapter
 import com.example.elera.DataClasses.ViewPagerData
 import com.example.elera.R
 import com.example.elera.databinding.FragmentIntroductionBinding
+import farrukh.example.reasa.SignInSignUp_fragments.Options_for_Signing_Fragment
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -39,6 +40,10 @@ class IntroductionFragment : Fragment() {
         SetOnboardingItems()
         setIndicators()
         CheckIndicator(0)
+
+        binding.introductionButton.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.activitymain,Options_for_Signing_Fragment()).commit()
+        }
         return binding.root
     }
 
