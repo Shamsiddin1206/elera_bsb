@@ -47,7 +47,7 @@ class Create_Account_Fragment : Fragment() {
     ): View? {
         val binding = FragmentCreateAccountBinding.inflate(inflater,container,false)
 
-       var list_students = appDatabase.getUserDao().getAllStudents()
+
 
         binding.signIn.setOnClickListener {
             if (binding.emailOrg.text.isNullOrEmpty() || binding.passwordOrg.text.isNullOrEmpty()){
@@ -55,7 +55,9 @@ class Create_Account_Fragment : Fragment() {
             }
 
             else{
-                appDatabase.getUserDao().addStudent(Student(name_student = binding.emailOrg.text.toString(), password_student = binding.passwordOrg.text.toString(), email = "", date = "", nickname = ""),)
+                appDatabase.getUserDao().addStudent(Student(email = binding.emailOrg.text.toString(), password_student = binding.passwordOrg.text.toString(), name_student = "", date = "", nickname = "", code = ""),)
+
+                var list_students = appDatabase.getUserDao().getAllStudents()
                 Log.d("BNM", "onCreateView: "+list_students.joinToString())
                 if (list_students.isEmpty()){
                     Toast.makeText(requireContext(), "can't register user", Toast.LENGTH_SHORT).show()

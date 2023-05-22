@@ -31,7 +31,7 @@
     <View
         android:id="@+id/view2"
         android:layout_width="0dp"
-        android:layout_height="500dp"
+        android:layout_height="520dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"

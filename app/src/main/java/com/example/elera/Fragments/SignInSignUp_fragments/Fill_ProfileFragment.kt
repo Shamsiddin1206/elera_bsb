@@ -1,11 +1,12 @@
 package farrukh.example.reasa.SignInSignUp_fragments
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.elera.database.AppDatabase
 import com.example.elera.databinding.FragmentProfileBinding
 import com.example.marks.entity.Student
@@ -36,10 +37,35 @@ class Fill_ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentProfileBinding.inflate(inflater,container,false)
+        val binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         var list_students = appDatabase.getUserDao().getAllStudents()
 
+        binding.next.setOnClickListener {
+            if (binding.passwordOrg.text.toString()
+                    .isNullOrEmpty() && binding.nickOrg.text.toString()
+                    .isNullOrEmpty() && binding.dateOrg.text.toString()
+                    .isNullOrEmpty() && binding.nameOrg.text.toString().isNullOrEmpty()
+            ) {
+                Toast.makeText(requireContext(), "fill the blanks", Toast.LENGTH_SHORT).show()
+            } else {
+                for (i in list_students) {
+                    if (i.email == param1!!.email) {
+                        appDatabase.getUserDao().updateStudent(
+                            Student(
+                                code = binding.passwordOrg.text.toString(),
+                                nickname = binding.nickOrg.text.toString(),
+                                password_student = param1?.password_student.toString(),
+                                date = binding.dateOrg.text.toString(),
+                                email = param1?.email,
+                                name_student = binding.nameOrg.text.toString()
+                            )
+                        )
+                    }
+                }
+                Log.d("TAG", "onCreateView: "+list_students.joinToString())
+            }
+        }
 
 
 

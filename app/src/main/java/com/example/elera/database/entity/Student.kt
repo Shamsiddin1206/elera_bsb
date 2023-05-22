@@ -11,6 +11,7 @@ data class Student(
     var id_student :Int = 0,
     var password_student:String,
     var email:String?,
+    var code:String,
     var date:String?,
     var nickname: String?,
     var name_student :String):Serializable

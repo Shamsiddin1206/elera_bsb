@@ -53,7 +53,7 @@ class LoginFragment : Fragment() {
 
             else{
                 for (i in list_students){
-                    if (binding.emailOrg.text.toString().equals(i.name_student) && binding.passwordOrg.text.toString().equals(i.password_student)){
+                    if (binding.emailOrg.text.toString().equals(i.email) && binding.passwordOrg.text.toString().equals(i.password_student)){
                         parentFragmentManager.beginTransaction().replace(R.id.activitymain,Fill_ProfileFragment.newInstance(i)).commit()
 
                     }
