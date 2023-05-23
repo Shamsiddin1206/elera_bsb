@@ -15,10 +15,10 @@ interface User {
     @Update(entity = Student::class)
     fun updateStudent(student: Student)
 
-    @Query("select * from student")
+    @Query("select * from students")
     fun getAllStudents(): List<Student>
 
-    @Query("select * from Mentors")
+    @Query("select * from mentors")
     fun getAllMentors():List<Mentors>
 
     @Insert

@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity
+@Entity(tableName = "students")
 data class Student(
     @PrimaryKey(autoGenerate = true)
     var id_student :Int = 0,

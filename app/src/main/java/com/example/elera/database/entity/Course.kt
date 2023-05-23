@@ -3,11 +3,11 @@ package com.example.elera.database.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "mentors")
-data class Mentors(
+@Entity(tableName = "course")
+data class Course(
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0,
-    var firstName:String,
-    var secondName:String,
-    var picture:Int
-):java.io.Serializable
+    var course_name: String,
+    var mentor_id: Int,
+    var student_id:Int
+)

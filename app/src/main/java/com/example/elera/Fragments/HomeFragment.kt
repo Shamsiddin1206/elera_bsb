@@ -27,13 +27,15 @@ class HomeFragment : Fragment() {
         }
     }
 
+    val appDatabase: AppDatabase by lazy {
+        AppDatabase.getInstance(requireContext())
+    }
     lateinit var binding: FragmentHomeBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val appDataBase = AppDatabase.getInstance(requireContext())
-        val mentorlist = appDataBase.getUserDao().getAllMentors()
+        val mentorlist = appDatabase.getUserDao().getAllMentors()
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val animHelper = AnimHelper.newInstance()
         binding.mentorsRecyclerView.layoutManager =
