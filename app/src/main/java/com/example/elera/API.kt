@@ -20,13 +20,13 @@ class API private constructor(context: Context){
         }
     }
 
-    fun setLoggedUser(mutableList: MutableList<Student>){
-        edit.putString("Logged", gson.toJson(mutableList)).apply()
+    fun setLoggedUser(arrayList: ArrayList<Student>){
+        edit.putString("Logged", gson.toJson(arrayList)).apply()
     }
-    fun getLoggedUser(): MutableList<Student>{
+    fun getLoggedUser(): ArrayList<Student>{
         val data: String = sharedPreferences.getString("Logged", "")!!
         if (data == ""){
-            return mutableListOf()
+            return arrayListOf()
         }
         val typeToken = object : TypeToken<MutableList<Student>>(){}.type
         return gson.fromJson(data, typeToken)

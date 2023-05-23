@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.elera.database.entity.CompletedLessons
 import com.example.elera.database.entity.Course
 import com.example.elera.database.entity.Lesson
 import com.example.elera.database.entity.Mentors
@@ -33,9 +34,20 @@ interface User {
     fun addCourse(course: Course)
 
     @Query("select * from lesson")
-    fun getAllLessons():List<Lesson>
+    fun getAllLessons():ArrayList<Lesson>
 
     @Insert
     fun addLesson(lesson: Lesson)
 
+    @Query("select * from completedLessons")
+    fun getAllCompletedLessons():ArrayList<CompletedLessons>
+
+    @Query("select * from completedLessons where id = :lesson_id")
+    fun getCompleteLessonsById(lesson_id:Int):Lesson
+
+    @Insert
+    fun addToCompletedLessons(completedLessons: CompletedLessons)
+
+    @Query("select * from lesson where course_idi = :courseni_id")
+    fun getLessonsByCourse(courseni_id:Int): ArrayList<Lesson>
 }
