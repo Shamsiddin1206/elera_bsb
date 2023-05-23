@@ -1,6 +1,5 @@
-package farrukh.example.reasa.SignInSignUp_fragments
+package com.example.elera.Fragments.SignInSignUp_fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,20 +9,13 @@ import androidx.fragment.app.Fragment
 import com.example.elera.R
 import com.example.elera.database.AppDatabase
 import com.example.elera.databinding.FragmentLoginBinding
+import farrukh.example.reasa.SignInSignUp_fragments.Create_Account_Fragment
+import farrukh.example.reasa.SignInSignUp_fragments.Fill_ProfileFragment
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -41,7 +33,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
         var list_students = appDatabase.getUserDao().getAllStudents()
 
@@ -54,8 +46,9 @@ class LoginFragment : Fragment() {
             else{
                 for (i in list_students){
                     if (binding.emailOrg.text.toString().equals(i.email) && binding.passwordOrg.text.toString().equals(i.password_student)){
-                        parentFragmentManager.beginTransaction().replace(R.id.activitymain,Fill_ProfileFragment.newInstance(i)).commit()
-
+                        parentFragmentManager.beginTransaction().replace(R.id.activitymain,
+                            Fill_ProfileFragment.newInstance(i)
+                        ).commit()
                     }
                 }
 //                Toast.makeText(requireContext(), "wrong password or email", Toast.LENGTH_SHORT).show()
@@ -63,7 +56,9 @@ class LoginFragment : Fragment() {
         }
 
         binding.signUp.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.activitymain,Create_Account_Fragment()).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.activitymain,
+                Create_Account_Fragment()
+            ).commit()
         }
 
 
@@ -72,15 +67,6 @@ class LoginFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             LoginFragment().apply {

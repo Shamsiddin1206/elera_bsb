@@ -9,5 +9,7 @@ data class Course(
     var id:Int = 0,
     var course_name: String,
     var mentor_id: Int,
-    var student_id:Int
+    var student_id:Int,
+    var course_price:String,
+    var course_reyting:String
 )

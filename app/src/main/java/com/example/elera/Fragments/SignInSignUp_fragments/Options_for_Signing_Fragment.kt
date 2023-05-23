@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.elera.Fragments.SignInSignUp_fragments.LoginFragment
 import com.example.elera.R
 import com.example.elera.databinding.FragmentOptionsForSigningBinding
 
@@ -46,7 +47,7 @@ class Options_for_Signing_Fragment : Fragment() {
             parentFragmentManager.beginTransaction().replace(R.id.activitymain,Create_Account_Fragment()).commit()
         }
         binding.next.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.activitymain,LoginFragment()).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.activitymain, LoginFragment()).commit()
 
         }
 
