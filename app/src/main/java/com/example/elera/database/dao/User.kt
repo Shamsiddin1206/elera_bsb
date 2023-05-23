@@ -22,13 +22,13 @@ interface User {
     fun getAllStudents(): List<Student>
 
     @Query("select * from mentors")
-    fun getAllMentors():List<Mentors>
+    fun getAllMentors():ArrayList<Mentors>
 
     @Insert
     fun addMentor(mentors: Mentors)
 
     @Query("select * from course")
-    fun getAllCourses():List<Course>
+    fun getAllCourses():ArrayList<Course>
 
     @Insert
     fun addCourse(course: Course)

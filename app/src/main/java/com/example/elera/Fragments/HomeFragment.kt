@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.elera.Adapters.CoursesAdapter
 import com.example.elera.Adapters.MentorsRecyclerAdapter
 import com.example.elera.AnimHelper
+import com.example.elera.R
 import com.example.elera.database.AppDatabase
+import com.example.elera.database.entity.Course
 import com.example.elera.database.entity.Mentors
 import com.example.elera.databinding.FragmentHomeBinding
 
@@ -36,16 +39,20 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val mentorlist = appDatabase.getUserDao().getAllMentors()
+        val coursesList = appDatabase.getUserDao().getAllCourses()
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val animHelper = AnimHelper.newInstance()
-        binding.mentorsRecyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.mentorsRecyclerView.adapter =
-            MentorsRecyclerAdapter(mentorlist as ArrayList<Mentors>, animHelper, requireContext(), object :MentorsRecyclerAdapter.OnPressed{
+        binding.mentorsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.mentorsRecyclerView.adapter = MentorsRecyclerAdapter(mentorlist, animHelper, requireContext(), object :MentorsRecyclerAdapter.OnPressed{
                 override fun onPressed(mentor: Mentors) {
-
+                    parentFragmentManager.beginTransaction().replace(R.id.activitymain, SingleMentorFragment.newInstance(mentor)).commit()
                 }
             })
+        binding.coursesRecyclerView.adapter = CoursesAdapter(coursesList, requireContext(), object : CoursesAdapter.OnPressed{
+            override fun onPressed(course: Course) {
+                parentFragmentManager.beginTransaction().replace(R.id.activitymain, SingleCourseFragment.newInstance(course)).commit()
+            }
+        })
         return binding.root
     }
 

@@ -24,4 +24,4 @@ data class CompletedLessons(
     var id:Int = 0,
     var lesson:Int,
     var student:Int
-)
+):java.io.Serializable

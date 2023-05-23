@@ -20,4 +20,4 @@ data class Lesson(
     var course_idi:Int,
     var lesson_time:String,
     var raqami:String
-)
+):java.io.Serializable

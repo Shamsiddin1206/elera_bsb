@@ -8,24 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.elera.API
 import com.example.elera.Adapters.LessonsAdapter
-import com.example.elera.R
 import com.example.elera.database.AppDatabase
 import com.example.elera.database.entity.CompletedLessons
+import com.example.elera.database.entity.Course
 import com.example.elera.database.entity.Lesson
 import com.example.elera.databinding.FragmentSingleCourseBinding
 
 private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class SingleCourseFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
+    private var param1: Course? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            param1 = it.getSerializable(ARG_PARAM1) as Course
         }
     }
 
@@ -43,7 +39,7 @@ class SingleCourseFragment : Fragment() {
     ): View {
         binding = FragmentSingleCourseBinding.inflate(inflater, container, false)
         api = API.newInstance(requireContext())
-        lessonsList = appDatabase.getUserDao().getLessonsByCourse(0)
+        lessonsList = appDatabase.getUserDao().getLessonsByCourse(param1!!.id)
         completedList = appDatabase.getUserDao().getAllCompletedLessons()
         val lessonsAdapter = LessonsAdapter(lessonsList, requireContext(), object : LessonsAdapter.Play{
             override fun onPlay(lesson: Lesson) {
@@ -65,11 +61,10 @@ class SingleCourseFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: Course) =
             SingleCourseFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putSerializable(ARG_PARAM1, param1)
                 }
             }
     }

@@ -3,6 +3,7 @@ package com.example.elera.database.entity
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.example.elera.DataClasses.CategoryEnum
 import com.example.marks.entity.Student
 
 @Entity(tableName = "course",
@@ -26,5 +27,7 @@ data class Course(
     var mentor: Int,
     var student:Int,
     var course_price:String,
-    var course_reyting:String
-)
+    var course_reyting:String,
+    var category: CategoryEnum,
+    var image:String
+):java.io.Serializable
