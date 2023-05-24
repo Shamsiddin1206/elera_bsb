@@ -42,7 +42,7 @@ class PinCode_Fragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentPinCodeBinding.inflate(inflater,container,false)
 
         var list_students = appDatabase.getUserDao().getAllStudents()

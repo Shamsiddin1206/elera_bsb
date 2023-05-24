@@ -21,7 +21,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_menu"
         android:paddingStart="10dp"
-        android:paddingEnd="10dp">
+        android:paddingEnd="10dp"
+        app:itemTextColor="@color/primary">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

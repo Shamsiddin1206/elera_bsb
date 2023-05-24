@@ -29,5 +29,5 @@ data class Course(
     var course_price:String,
     var course_reyting:String,
     var category: CategoryEnum,
-    var image:String
+    var image:Int
 ):java.io.Serializable

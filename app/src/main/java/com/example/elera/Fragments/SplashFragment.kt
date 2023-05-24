@@ -50,7 +50,7 @@ class SplashFragment : Fragment() {
                         parentFragmentManager.beginTransaction().replace(R.id.activitymain,Fill_ProfileFragment()).commit()
                     }
                     else{
-                        parentFragmentManager.beginTransaction().replace(R.id.activitymain,PinCode_Fragment()).commit()
+                        parentFragmentManager.beginTransaction().replace(R.id.activitymain,DefaultFragment()).commit()
                     }
                 }
             }

@@ -12,7 +12,7 @@ import com.example.elera.database.entity.Mentors
 import com.example.marks.entity.Student
 
 
-@Database(entities = [Student::class, Mentors::class, Course::class, Lesson::class, CompletedLessons::class], version = 1)
+@Database(entities = [Student::class, Mentors::class, Course::class, Lesson::class, CompletedLessons::class], version = 2)
 abstract class AppDatabase:RoomDatabase() {
     abstract fun getUserDao(): User
 

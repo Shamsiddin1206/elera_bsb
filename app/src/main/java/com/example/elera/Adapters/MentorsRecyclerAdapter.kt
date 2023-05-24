@@ -41,11 +41,7 @@ class MentorsRecyclerAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val mentor = mentorsList[position]
-        holder.image.load(mentor.picture){
-            placeholder(R.drawable.img)
-            error(R.drawable.no_internet)
-            transformations(CircleCropTransformation())
-        }
+        holder.image.setImageResource(mentor.picture)
         holder.namE.text = mentor.firstName
         holder.itemView.setOnClickListener {
             animHelper.animate(
