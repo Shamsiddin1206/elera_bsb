@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey
 )
 data class Lesson(
     @PrimaryKey(autoGenerate = true)
-    var id:Int = 0,
+    var lesson_id:Int = 0,
     var lesson_name:String,
     var course_idi:Int,
     var lesson_time:String,

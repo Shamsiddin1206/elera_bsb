@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.elera.Fragments.SignInSignUp_fragments.LoginFragment
 import com.example.elera.R
 import com.example.elera.database.AppDatabase
 import com.example.elera.databinding.FragmentCreateAccountBinding
@@ -64,7 +65,9 @@ class Create_Account_Fragment : Fragment() {
                 }
                 else{
                     Toast.makeText(requireContext(), "registered ", Toast.LENGTH_SHORT).show()
-                    parentFragmentManager.beginTransaction().replace(R.id.activitymain,LoginFragment()).commit()
+                    parentFragmentManager.beginTransaction().replace(R.id.activitymain,
+                        LoginFragment()
+                    ).commit()
                 }
             }
         }

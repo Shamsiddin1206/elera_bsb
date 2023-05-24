@@ -36,7 +36,8 @@ class LessonsAdapter(var arrayList: ArrayList<Lesson>, var context: Context, var
         holder.name.text = a.lesson_name
         holder.duration.text = a.lesson_time
         holder.number.text = a.raqami
-        if (appDatabase.getUserDao().getCompleteLessonsById(a.id)==a){
+        val q = appDatabase.getUserDao().getLessonById(appDatabase.getUserDao().getCompleteLessonsById(a.lesson_id).lesson)
+        if (q == a){
             holder.status.setImageResource(R.drawable.ic_done)
         }else{
             holder.status.setImageResource(R.drawable.ic_play)

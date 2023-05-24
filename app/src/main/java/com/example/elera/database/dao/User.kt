@@ -22,32 +22,34 @@ interface User {
     fun getAllStudents(): List<Student>
 
     @Query("select * from mentors")
-    fun getAllMentors():ArrayList<Mentors>
+    fun getAllMentors():List<Mentors>
 
     @Insert
     fun addMentor(mentors: Mentors)
 
     @Query("select * from course")
-    fun getAllCourses():ArrayList<Course>
+    fun getAllCourses():List<Course>
 
     @Insert
     fun addCourse(course: Course)
 
     @Query("select * from lesson")
-    fun getAllLessons():ArrayList<Lesson>
+    fun getAllLessons():List<Lesson>
+    @Query("select * from lesson where lesson_id = :id")
+    fun getLessonById(id:Int):Lesson
 
     @Insert
     fun addLesson(lesson: Lesson)
 
     @Query("select * from completedLessons")
-    fun getAllCompletedLessons():ArrayList<CompletedLessons>
+    fun getAllCompletedLessons():List<CompletedLessons>
 
-    @Query("select * from completedLessons where id = :lesson_id")
-    fun getCompleteLessonsById(lesson_id:Int):Lesson
+    @Query("select * from completedLessons where lesson = :lesson_id")
+    fun getCompleteLessonsById(lesson_id:Int):CompletedLessons
 
     @Insert
     fun addToCompletedLessons(completedLessons: CompletedLessons)
 
     @Query("select * from lesson where course_idi = :courseni_id")
-    fun getLessonsByCourse(courseni_id:Int): ArrayList<Lesson>
+    fun getLessonsByCourse(courseni_id:Int): List<Lesson>
 }

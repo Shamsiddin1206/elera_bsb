@@ -38,8 +38,8 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val mentorlist = appDatabase.getUserDao().getAllMentors()
-        val coursesList = appDatabase.getUserDao().getAllCourses()
+        val mentorlist = ArrayList(appDatabase.getUserDao().getAllMentors())
+        val coursesList = ArrayList(appDatabase.getUserDao().getAllCourses())
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val animHelper = AnimHelper.newInstance()
         binding.mentorsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)

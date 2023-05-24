@@ -22,7 +22,7 @@ import com.example.marks.entity.Student
 )
 data class Course(
     @PrimaryKey(autoGenerate = true)
-    var id:Int = 0,
+    var course_id:Int = 0,
     var course_name: String,
     var mentor: Int,
     var student:Int,

@@ -31,7 +31,7 @@ class SplashFragment : Fragment() {
         binding = FragmentSplashBinding.inflate(inflater, container, false)
         binding.logo.alpha = 0f
         binding.logo.animate().setDuration(2500).alpha(1f).withEndAction {
-            parentFragmentManager.beginTransaction().replace(R.id.activitymain, IntroductionFragment()).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.activitymain, DefaultFragment()).commit()
         }
         return binding.root
     }

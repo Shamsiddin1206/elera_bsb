@@ -39,18 +39,18 @@ class SingleCourseFragment : Fragment() {
     ): View {
         binding = FragmentSingleCourseBinding.inflate(inflater, container, false)
         api = API.newInstance(requireContext())
-        lessonsList = appDatabase.getUserDao().getLessonsByCourse(param1!!.id)
-        completedList = appDatabase.getUserDao().getAllCompletedLessons()
+        lessonsList = ArrayList(appDatabase.getUserDao().getLessonsByCourse(param1!!.course_id))
+        completedList = ArrayList(appDatabase.getUserDao().getAllCompletedLessons())
         val lessonsAdapter = LessonsAdapter(lessonsList, requireContext(), object : LessonsAdapter.Play{
             override fun onPlay(lesson: Lesson) {
                 var count = 0
                 for (i in 0 until completedList.size){
-                    if (completedList[i].lesson == lesson.id && completedList[i].student == api.getLoggedUser()[0].id_student){
+                    if (completedList[i].lesson == lesson.lesson_id && completedList[i].student == api.getLoggedUser()[0].id_student){
                         count++
                     }
                 }
                 if (count==0){
-                    appDatabase.getUserDao().addToCompletedLessons(CompletedLessons(lesson = lesson.id, student = api.getLoggedUser()[0].id_student))
+                    appDatabase.getUserDao().addToCompletedLessons(CompletedLessons(lesson = lesson.lesson_id, student = api.getLoggedUser()[0].id_student))
                 }
             }
         })

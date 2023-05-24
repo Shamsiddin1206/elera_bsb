@@ -14,7 +14,7 @@ import com.example.marks.entity.Student
         ),
         ForeignKey(
             entity = Student::class,
-            parentColumns = ["student_id"],
+            parentColumns = ["id_student"],
             childColumns = ["student"]
         )
     ]
