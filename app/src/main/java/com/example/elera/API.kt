@@ -5,6 +5,7 @@ import com.example.marks.entity.Student
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+
 class API private constructor(context: Context){
     val sharedPreferences = context.getSharedPreferences("data", 0)
     val edit = sharedPreferences.edit()

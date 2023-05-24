@@ -1,11 +1,10 @@
 package farrukh.example.reasa.SignInSignUp_fragments
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.elera.Fragments.DefaultFragment
 import com.example.elera.R
 import com.example.elera.database.AppDatabase
@@ -54,7 +53,6 @@ class PinCode_Fragment : Fragment() {
             for (i in list_students) {
                 if (i.id_student == param1) {
                     user = i
-
                     if (binding.firstPinView.text.toString().equals(user.code)){
                         parentFragmentManager.beginTransaction().replace(R.id.activitymain,DefaultFragment()).commit()
                     }
