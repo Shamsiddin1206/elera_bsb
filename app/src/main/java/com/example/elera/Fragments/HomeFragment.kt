@@ -42,7 +42,6 @@ class HomeFragment : Fragment() {
         val coursesList = ArrayList(appDatabase.getUserDao().getAllCourses())
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         val animHelper = AnimHelper.newInstance()
-        binding.mentorsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.mentorsRecyclerView.adapter = MentorsRecyclerAdapter(mentorlist, animHelper, requireContext(), object :MentorsRecyclerAdapter.OnPressed{
                 override fun onPressed(mentor: Mentors) {
                     parentFragmentManager.beginTransaction().replace(R.id.activitymain, SingleMentorFragment.newInstance(mentor)).commit()

@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val appDataBase = AppDatabase.getInstance(this)
-//        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.img))
-//        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.img))
-//        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.img))
-//        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.img))
-//        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.img))
-//        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.img))
+        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.user))
+        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.user))
+        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.user))
+        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.user))
+        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.user))
+        appDataBase.getUserDao().addMentor(Mentors(firstName = "Jonathan", secondName = "Williams", picture = R.drawable.user))
         supportFragmentManager.beginTransaction().add(R.id.activitymain, SplashFragment()).commit()
     }
 }
