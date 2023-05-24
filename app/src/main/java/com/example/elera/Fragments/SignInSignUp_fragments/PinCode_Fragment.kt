@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.elera.Fragments.DefaultFragment
+import com.example.elera.R
+import com.example.elera.database.AppDatabase
 import com.example.elera.databinding.FragmentPinCodeBinding
+import com.example.marks.entity.Student
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -21,15 +25,19 @@ private const val ARG_PARAM2 = "param2"
  */
 class PinCode_Fragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
+    private var param1: Int? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
+            param1 = it.getInt(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+    }
+
+    val appDatabase: AppDatabase by lazy {
+        AppDatabase.getInstance(requireContext())
     }
 
     override fun onCreateView(
@@ -38,6 +46,24 @@ class PinCode_Fragment : Fragment() {
     ): View? {
         val binding = FragmentPinCodeBinding.inflate(inflater,container,false)
 
+        var list_students = appDatabase.getUserDao().getAllStudents()
+
+      var user:Student
+
+        binding.verify.setOnClickListener {
+            for (i in list_students) {
+                if (i.id_student == param1) {
+                    user = i
+
+                    if (binding.firstPinView.text.toString().equals(user.code)){
+                        parentFragmentManager.beginTransaction().replace(R.id.activitymain,DefaultFragment()).commit()
+                    }
+                }
+            }
+
+
+
+        }
 
 
         return binding.root
@@ -54,10 +80,10 @@ class PinCode_Fragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: Int) =
             PinCode_Fragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
+                    putInt(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }

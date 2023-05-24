@@ -15,7 +15,7 @@ interface User {
     @Insert
     fun addStudent(student: Student)
 
-    @Update(entity = Student::class)
+    @Update
     fun updateStudent(student: Student)
 
     @Query("select * from students")
