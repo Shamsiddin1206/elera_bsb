@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.elera.R
+import com.example.elera.databinding.FragmentProfileBinding
+import farrukh.example.reasa.SignInSignUp_fragments.Options_for_Signing_Fragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,8 +37,19 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        binding.logOut.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.activitymain, Options_for_Signing_Fragment()).commit()
+        }
+
+        binding.photo.setOnClickListener {
+            Toast.makeText(requireContext(), "not yet available", Toast.LENGTH_SHORT).show()
+        }
+
+
+        return binding.root
     }
 
     companion object {
